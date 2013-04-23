@@ -1,0 +1,82 @@
+<%@Import Namespace="eNCore.eNShared" %>
+<%@ Master Language="VB" Inherits="eNCore.eNMasterPageBase" %>
+<%@ Register TagPrefix="cc1" Namespace="eNeighborhoods.EnterpriseProducts.Libraries.eNAjax" Assembly="eNAjax" %>
+
+<%@ Register TagPrefix="frm" Namespace="eNeighborhoods.EnterpriseProducts.Libraries.ActionlessForm" Assembly="ActionlessForm" %>
+
+<!DOCTYPE html>
+<html lang="en" class="no-js <%=m_objsite.SiteScopeLevelID.toString() %> ">
+<head id="Head1" runat="server">
+<%-- title, meta tags, and site/template/variation resource are dynamically ad --%>
+  
+</head> 
+<body id="<%=Me.BodyID %>" class="<%=Me.BodyClass %>">
+    
+    <frm:form id="form1" novalidate="true" runat="server">
+        
+        <header class="global">
+            <% = m_objContent.GetSysMsg("Global_Header", " ")%>         
+        </header>
+
+       <div id="container">          
+        <cc1:AjaxManager id="AjaxManager1" runat="server" PageURL="/proxy/proxy.aspx" />
+       
+       
+	        <header>
+	            <asp:PlaceHolder ID="plhHeader" runat="server"></asp:PlaceHolder>
+	        </header>
+	       <div id="nav_main" class="nav_main_wrapper">
+                <nav class="nav_main">                  
+                    <asp:PlaceHolder ID="plhMenu" runat="server"></asp:PlaceHolder>
+                </nav>
+            </div>
+
+	        
+        
+       
+
+            <asp:ContentPlaceHolder id="LeftContentPlaceHolder" runat="server">
+            <!-- left content will go here -->
+            </asp:ContentPlaceHolder>
+        
+
+
+        
+        <section id="body" class="colmask twocol-right" >
+            <asp:ContentPlaceHolder id="MainContentPlaceholder" runat="server">
+            <!-- main content will go here -->
+            </asp:ContentPlaceHolder>
+        </section>
+        
+       
+            <asp:ContentPlaceHolder id="RightContentPlaceHolder" runat="server">
+            <!-- right content will go here -->
+            </asp:ContentPlaceHolder>
+      
+        
+        <footer>
+            <asp:PlaceHolder ID="plhFooter" runat="server"></asp:PlaceHolder>
+        </footer>
+        
+        </div>
+         <footer class="global">
+            <%  = m_objContent.GetSysMsg("Global_Footer", " ")%>         
+        </footer> 
+        <!-- used for loading scripts/resource files at the very end of page-->
+        <asp:PlaceHolder ID="phTemplateFooter" runat="server"></asp:PlaceHolder>
+      
+       
+    </frm:form>
+  
+
+<script type="text/javascript" src="http://cloud.github.com/downloads/malsup/cycle/jquery.cycle.all.latest.js"></script> 
+<script type="text/javascript">
+$(document).ready(function() {
+$('.slideshow').cycle({
+       fx: 'fade' 
+    });
+});
+</script>
+
+</body>
+</html>
